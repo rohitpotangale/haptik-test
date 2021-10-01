@@ -36,3 +36,74 @@
     transform: rotate(360deg);
   }
 }
+.friend-list{
+  width: 500px;
+  height:500px;
+  margin: auto;
+  border: 1px solid black;
+
+}
+.friend-list .title{
+  color: black;
+  font-weight: 700;
+}
+.friend-list .title-li{
+  background: #dfdfdf;
+}
+ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+li{
+
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  box-sizing: border-box;
+  text-align: left;
+  padding: 10px;
+  border-top: 1px solid #dbdbdb;
+  border-bottom: 1px solid #dbdbdb;
+  border-top: 1px solid #dbdbdb;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.input-field-li{
+  padding: 0px;
+}
+.input-field{
+  height: 30px;
+  width: 100%;
+  border: 1px solid #dbdbdb;
+}
+.userDetails{
+  width: 100%;
+}
+.userDetails-name-div{
+  float: left;
+  width: 80%;
+}
+.userDetails-name{
+  font-weight: 700;
+}
+.userDetails-info{
+  font-size: 8px;
+}
+
+.userDetails-f-d-div{
+  float: right;
+  width: 20%;
+}
+.star-icon{
+  margin: 5px;
+  padding: 2px;
+  border: 1px solid #c7c7c7;
+  height: 24px;
+  width: 30px;
+  display: inline-block;
+  text-align: center;
+  font-size: 18px;
+  cursor: pointer;
+}
