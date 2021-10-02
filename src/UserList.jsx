@@ -83,6 +83,7 @@ function UserList() {
 
   return (
     <div className="userlist">
+
         <div className="friend-list">
                 <ul>
                 <li className="title-li">
