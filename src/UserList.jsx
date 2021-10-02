@@ -1,11 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import logo from './logo.svg';
+import Pagination from './Pagination';
 import './App.css';
 
 function UserList() {
     const [userList, setUserList] = useState([]);
     const [userListBkp, setUserListBkp] = useState([]);
     const [name, setName] = useState('');
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postPerPage] = useState(4);
+
 
     const handleInput = (e)=>{
         setName(e.target.value);
@@ -25,10 +30,6 @@ function UserList() {
         let userTrue = list.filter((u)=>u.isFavorite ==true);
         let userFalse = list.filter((u)=>u.isFavorite ==false);
 
-        // list.sort(function(x, y) {
-        //     return (x.isFavorite === y.isFavorite)? 0 : x? -1 : 1;
-  
-        // });
         return [...userTrue, ...userFalse];
     }
     const pushDataToUsers =(e)=>{
@@ -67,9 +68,18 @@ function UserList() {
     }
 
     const deleteUser = (id)=>{
-        const newList = userList.filter((item) => item.id !==id);
+        if(window.confirm("Do you want to delete?")){
+            const newList = userList.filter((item) => item.id !==id);
             setUserList(getSortedData(newList));
+            setUserListBkp(newList);
+        }
+       
     }
+
+    const indexOfLastPost = currentPage * postPerPage;
+    const indexOfFirstPost = indexOfLastPost - postPerPage;
+    const currentPosts = userList.slice(indexOfFirstPost, indexOfLastPost);
+    const paginate = pageNumber => setCurrentPage(pageNumber);
 
   return (
     <div className="userlist">
@@ -87,7 +97,7 @@ function UserList() {
                     onKeyPress={pushDataToUsers}>
                         </input></li>
 
-                        {userList.map((u)=>{
+                        {currentPosts.map((u)=>{
                             return (
                                 <li className="user-li">
                                     <div className="userDetails">
@@ -112,6 +122,12 @@ function UserList() {
                         })}
                 </ul>
         </div>
+        <Pagination
+        postsPerPage={postPerPage}
+        totalPosts={userList.length}
+        paginate={paginate}
+        currentPage={currentPage}
+      />
     </div>
   );
 }
